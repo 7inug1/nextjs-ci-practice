@@ -1,12 +1,10 @@
 # 작업 규칙
 
-1. 테스트를 먼저 쓴다. 실패(빨간 불)를 확인한 뒤에 구현한다.
-2. 한 번에 한 단계만 진행하고, 끝나면 멈춰서 확인받는다.
-3. 키 같은 비밀값은 코드와 커밋에 넣지 않는다. .env에만 두고 .gitignore로 막는다. AI 도구는 .env를 열지 않는다.
-4. 저장소가 공개이므로 개인 정보(이메일, 키, 회사 코드)를 올리지 않는다. 커밋 작성자는 GitHub 비공개 주소(noreply)를 쓴다.
-5. 첫 커밋 이후에는 main에 직접 push하지 않고 작업 브랜치에서 PR을 올린다.
-6. 커밋 메시지는 feat: fix: test: docs: chore: + 한국어 한 줄, 명사형으로 끝낸다.
-   본문은 소제목 아래 - 불릿. 공동작성 trailer는 넣지 않는다.
-7. 끝났다고 말하기 전에 테스트와 실제 실행으로 확인하고, 하지 않은 확인은 밝힌다.
-8. AI에게 맡긴 작업은 목표, 완료 조건, 확인 방법을 docs/ai-log.md에 남긴다.
-9. 워크플로(YAML)의 모든 줄은 "왜 있는지" 직접 설명할 수 있어야 한다.
+1. 한 번에 한 단계만 진행하고 끝나면 멈춰서 확인받는다. 질문도 한 번에 하나만 한다.
+   참고: [agents-md-snippets의 "One question at a time"](https://github.com/jasonku09/agents-md-snippets), [next-lesson 스킬](https://github.com/jasonku09/altitude-skills/tree/HEAD/skills/next-lesson)
+2. 비밀값과 개인 정보(키, 이메일)는 코드와 커밋에 넣지 않는다. 저장소가 공개이고, AI 도구는 .env를 열지 않는다.
+3. 첫 커밋 이후에는 main에 직접 push하지 않고 작업 브랜치에서 PR을 올린다.
+4. 커밋 메시지는 [Conventional Commits](https://www.conventionalcommits.org/ko/v1.0.0/)(feat: fix: test: docs: chore:)를 따라 한국어 한 줄, 명사형으로 끝낸다.
+   본문은 소제목 아래 - 불릿으로 쓰고, 공동작성 trailer는 넣지 않는다.
+5. AI에게 맡긴 작업은 목표, 완료 조건, 확인 방법을 docs/ai-log.md에 남긴다.
+6. 워크플로(YAML)의 모든 줄은 "왜 있는지" 직접 설명할 수 있어야 한다.
