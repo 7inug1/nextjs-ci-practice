@@ -1,0 +1,21 @@
+name: CI                          # Actions 탭과 PR Checks에 보이는 이름
+
+on:                               # 언제 실행할까
+  push:
+    branches: [main]              # main에 머지됐을 때 (머지 결과도 깨지지 않았는지 확인)
+  pull_request:                   # PR을 열거나 커밋을 더 올렸을 때 (머지 전에 확인)
+
+jobs:
+  verify:                         # job 이름. 공식 예시는 build지만 하는 일이 검사라 verify로 함
+    runs-on: ubuntu-latest        # GitHub이 빌려주는 리눅스 서버. 편하지만 OS 버전이 바뀔 수 있음
+    steps:                        # 위에서 아래로 실행하고, 하나라도 실패하면 멈춤
+      - uses: actions/checkout@v7         # 저장소 코드를 서버로 내려받음
+      - uses: actions/setup-node@v7       # Node.js 설치
+        with:
+          node-version-file: .nvmrc       # 로컬과 같은 버전(20)을 쓰도록 .nvmrc에서 읽음
+          cache: npm                      # 내려받은 패키지를 저장해 다음 실행을 빠르게 함
+      - run: npm ci                       # package-lock.json 그대로 설치 (install과 달리 lock을 바꾸지 않음)
+      - run: npm run lint                 # 코드 규칙 검사 (가장 빨라서 먼저)
+      - run: npm run typecheck            # 타입 생성(next typegen) 후 타입 검사
+      - run: npm test                     # Vitest. CI 환경에서는 감시 모드 없이 한 번만 실행
+      - run: npm run build                # 실제 빌드가 되는지 확인 (가장 느려서 마지막)
