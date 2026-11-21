@@ -10,3 +10,8 @@ out/
 report.xml
 # macOS
 .DS_Store
+# Next.js 템플릿 기본값 (create-next-app 16.4.6)
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+*.pem
